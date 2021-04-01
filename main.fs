@@ -30,20 +30,20 @@ AssertEquality expected_value actual_value
 
 //Q1
 let expected_value1 = 5 + 6
-let ____
+let actual_value1 = 11
 printf "Q1 ..."
 AssertEquality expected_value1 actual_value1
 
-(* move this line downwards to show more questions
+
 //Q2
 let myvar=40
-let ___
+let newvar = myvar + 40
 printf "Q2 ..."
 AssertEquality newvar 80
 
 //Q3: nested function calls
 let add a b =
-  ___
+  a + b
 
 let res1 = add 3 6
 let res2 = add 4 3
@@ -53,7 +53,7 @@ printf "Q3-2 ..."
 AssertEquality res2 7
 
 let addTwice x y =
-  add (add x y) (___)
+  add (add x y) (add x y)
 
 let restotal= addTwice 2 3
 printf "Q3-3 ..."
@@ -61,20 +61,20 @@ AssertEquality restotal 10
 
 //Q4
 let mystr="Koans are puzzles."
-let newstr=___
+let newstr="Koans are puzzles."
 printf "Q4 ..."
 AssertEquality mystr newstr
 
 //Q5: nested function calls
 let mystr5="Koans are puzzles."
 let replaceEtoY (text:string) =
-  text.Replace (___)
+  text.Replace ("e", "Y")
 let newstr5= replaceEtoY mystr5
 printf "Q5-1 ..."
 AssertEquality newstr5 "Koans arY puzzlYs."
 
 let replaceAEtoY(text:string)=
-  replaceEtoY(text.Replace(___))
+  replaceEtoY(text.Replace("a", "Y"))
 let finalstr=replaceAEtoY mystr
 printf "Q5-2 ..."
 AssertEquality finalstr "KoYns YrY puzzlYs."
@@ -83,7 +83,7 @@ AssertEquality finalstr "KoYns YrY puzzlYs."
 //Compare this to Q3
 let addTwice2 x y =
   //create a nested helper function
-  let ___ =
+  let add2 a b =
     a+b
   
   //use the helper function
@@ -100,8 +100,8 @@ AssertEquality res 14
 let mystr7="Q7 Koans are puzzles."
 let replaceAEtoY7 (text:string) =
   //create helper func
-  let replaceEtoY7 (___) =
-    text.Replace (___)
+  let replaceEtoY7 (text:string) =
+    text.Replace ("e", "Y")
   //use helper func
   replaceEtoY7 (text.Replace ("a","Y"))
 
@@ -131,7 +131,7 @@ let res92=intermediateFn  6 // translate to math: res2=intermediateFn(6)=5+6
 printf "Q8 ..."
 AssertEquality res91 res92
 
-
+(* move this line downwards to show more questions
 //Q9: two ways of writing a func with 2 variable inputs
 let func1 x1 n = //method 1
   x1+___
