@@ -230,7 +230,7 @@ let testEqualNew inputTuple =
   | _ -> printf "Fail"
 printf "Q14-1 ..."
 testEqual 10 10
-printf "Q14-2 ..."
+printf "Q14-2 ...Incorrect Input"
 testEqualNew 10 10
 printf "Q14-3 ..."
 testEqualNew (10,10)
@@ -261,5 +261,3 @@ let tail3=myLast3 lis
 printf "Q17 ..."
 AssertEquality tail3 5
 *)
-
-
