@@ -114,11 +114,11 @@ AssertEquality res7 "Q7 KoYns YrY puzzlYs."
 
 //Q8 multi input func can be changed to solo input func
 let add2var x y=
-  ___
+  x + y
 
 let addOneByOne x=
   //define the helper func
-  let ___= 
+  let addHelper y= 
     x+y
   //call the helper func to provide return value
   addHelper
@@ -131,12 +131,12 @@ let res92=intermediateFn  6 // translate to math: res2=intermediateFn(6)=5+6
 printf "Q8 ..."
 AssertEquality res91 res92
 
-(* move this line downwards to show more questions
+
 //Q9: two ways of writing a func with 2 variable inputs
 let func1 x1 n = //method 1
-  x1+___
+  x1+ n
 let func2 n = //method 2
-  fun x -> ___
+  fun x -> x+n
 
 let Q9res1=func1 2 3
 let Q9res2=func2 2 3
@@ -150,7 +150,7 @@ AssertEquality Q9res1 Q9res2
 let addTwoNumbers x y  = 
 
     //create a nested helper function
-    let ___= 
+    let add n = 
        fun x -> x + n
 
     // use the helper function       
@@ -165,10 +165,9 @@ let addThreeNumbers x y z =
 
     //create a nested helper function
     let add11 n = 
-       fun x -> ___
-
+       fun x -> x + n
     // use the helper function       
-    x |> add11 y |> ___ //meaning: send x through a pipe; perform add y; send the result through a pipe; perform add z.
+    x |> add11 y |> add11 z //meaning: send x through a pipe; perform add y; send the result through a pipe; perform add z.
 
 let Q11Sum3=addThreeNumbers 5 6 7
 printf "Q11 ..."
@@ -180,7 +179,7 @@ let add12 y=
   fun x -> x + y
 
 let addThreeNumShort x y z =
-  x |> ___ |> add12 z
+  x |> add12 y|> add12 z
 let Sum3Short = addThreeNumShort 5 6 7
 printf "Q12 ..."
 AssertEquality Q11Sum3 Sum3Short
@@ -191,7 +190,7 @@ let addQ13 a b =
   a+b
 
 let addThreeNumQ13 x y z =
-  addQ13 (addQ13 ___) z
+  addQ13 (addQ13 x y) z
 let Sum3Q13 = addThreeNumQ13 5 6 7
 printf "Q13 ..."
 AssertEquality Sum3Q13 Sum3Short
@@ -226,21 +225,24 @@ let testEqual a b =
 //change it by using match
 let testEqualNew inputTuple =
   match inputTuple with
-  | (a,b) when a=b -> ___
-  | _ -> printf "Fail"
+  | (a,b) when a=b -> printf "TestSuccess!"
+  | _  -> printf "Fail"
 printf "Q14-1 ..."
 testEqual 10 10
-printf "Q14-2 ...Incorrect Input"
-testEqualNew 10 10
+printf "Q14-2 ...Incorrect Input Format\n"
+//testEqualNew 10 10
 printf "Q14-3 ..."
 testEqualNew (10,10)
 //Now you know what match does, we will use the second way to write AssertEquality in future labs
 
 //Q15
 // can you write a function that tests whether 3 elements are equal without using if-else?
-let testEqual3 ___
+let testEqual3 inputTuple =
+  match inputTuple with
+  | (x, y, z) when x=y && x=z -> printf "TestSuccess!"
+  | _ -> printf "Fail"
 
-printf "Q15 ..."
+printf "\nQ15 ..."
 testEqual3 (2,2,2)
 
 //Q16 List.tail
@@ -250,14 +252,14 @@ let myLast1 lis=
   lis|> List.tail
 
 let tail1=myLast1 lis
-printf "Q16 ..."
-AssertEquality tail1 ___
+printf "\nQ16 ..."
+AssertEquality tail1 [2;3;4;5]
 
 //Q17 Find the last element of a list
 let myLast3 lis=
-  lis|> List.rev |> List.___
+  lis|> List.rev |> List.head
 
 let tail3=myLast3 lis
 printf "Q17 ..."
 AssertEquality tail3 5
-*)
+(* move this line downwards to show more questions*)
